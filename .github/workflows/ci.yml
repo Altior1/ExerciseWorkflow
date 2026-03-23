@@ -26,22 +26,6 @@ jobs:
           if: always()
           run: |
             echo "This is the resume job"
-            echo "## Results" > resume.md
-            echo "### Tests" >> resume.md
-            if [ ${{ job.status }} == 'success' ]; then
-              echo "- All tests passed" >> resume.md
-            else
-              echo "- Some tests failed" >> resume.md
-            fi
-            echo "### Linting" >> resume.md
-            if [ ${{ job.status }} == 'success' ]; then
-              echo "- Linting passed" >> resume.md
-            else
-              echo "- Linting failed" >> resume.md
-            fi
-            echo "### Formatting" >> resume.md
-            if [ ${{ job.status }} == 'success' ]; then
-              echo "- Formatting passed" >> resume.md
-            else
-              echo "- Formatting failed" >> resume.md            fi
-            cat resume.md      
+            echo "## Results" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "Tests completed with status: ${{ job.status }}" >> "$GITHUB_STEP_SUM     
