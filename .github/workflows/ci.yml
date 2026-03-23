@@ -27,5 +27,5 @@ jobs:
           run: |
             echo "This is the resume job"
             echo "## Results" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "Tests completed with status: ${{ job.status }}" >> "$GITHUB_STEP_SUM     
+            echo " " >> "$GITHUB_STEP_SUMMARY"
+            echo "Tests completed with status: ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
