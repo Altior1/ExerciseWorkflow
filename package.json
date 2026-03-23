@@ -1,0 +1,30 @@
+{
+  "name": "exerciseworkflow",
+  "version": "1.0.0",
+  "description": "Ce projet sert d'exercice pour l'apprentissage des CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint .",
+    "format": "prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Altior1/ExerciseWorkflow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Altior1/ExerciseWorkflow/issues"
+  },
+  "homepage": "https://github.com/Altior1/ExerciseWorkflow#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^10.1.0",
+    "jest": "^30.3.0",
+    "prettier": "^3.8.1"
+  }
+}
