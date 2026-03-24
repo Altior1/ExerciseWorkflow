@@ -6,11 +6,17 @@ on:
 jobs:
   test:
     uses: ./.github/workflows/test.yml
+    with:
+      node_version: '20'
+      environment: 'test'
 
   build:
     needs: test
     uses: ./.github/workflows/build.yml
-    
+    with:
+      node_version: '20'
+      directory: './build'
+
   resume:
     runs-on: ubuntu-latest
     steps:
