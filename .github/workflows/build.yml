@@ -1,0 +1,46 @@
+name: build
+
+on:
+    workflow_call:
+        inputs:
+            node_version:
+                description: "la version de node"
+                required: false
+                default: "20"
+                type: string
+            directory:
+                description: "repertoire d'arrivé du build"
+                type: string
+                required: false
+                default: "./build"
+        
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: ${{ inputs.node_version }}
+                cache: npm
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build app
+              run: npm run build
+
+            - name: Copy build artifacts to destination
+              run: |
+                    mkdir -p "${{ inputs.directory }}"
+                    if [ -d "dist" ]; then
+                        cp -r dist/. "${{ inputs.directory }}/"
+                    elif [ -d "build" ]; then
+                        cp -r build/. "${{ inputs.directory }}/"
+                    else
+                        echo "Aucun dossier dist/ ou build/ trouvé après le build."
+                        exit 1
+                    fi

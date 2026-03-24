@@ -1,0 +1,32 @@
+name: test
+
+on:
+    workflow_call:
+        inputs:
+            node_version:
+                description: "Version de Node.js"
+                required: false
+                type: string
+                default: '20'
+            environment:
+                description: "Environnement cible"
+                required: true
+                type: string
+        
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v6
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v6
+              with:
+                node-version: ${{ inputs.node_version}}
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run tests
+              run: npm test
+
