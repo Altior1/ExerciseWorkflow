@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
-    "format": "prettier --check ."
+    "format": "prettier --check .",
+    "build": "echo 'Building the project...'"
   },
   "repository": {
     "type": "git",
