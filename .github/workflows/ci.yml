@@ -19,6 +19,7 @@ jobs:
 
   resume:
     runs-on: ubuntu-latest
+    needs: [test, build]
     steps:
         - name: resume
           if: always()
