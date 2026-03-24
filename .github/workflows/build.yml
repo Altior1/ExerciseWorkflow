@@ -32,15 +32,3 @@ jobs:
 
             - name: Build app
               run: npm run build
-
-            - name: Copy build artifacts to destination
-              run: |
-                    mkdir -p "${{ inputs.directory }}"
-                    if [ -d "dist" ]; then
-                        cp -r dist/. "${{ inputs.directory }}/"
-                    elif [ -d "build" ]; then
-                        cp -r build/. "${{ inputs.directory }}/"
-                    else
-                        echo "Aucun dossier dist/ ou build/ trouvé après le build."
-                        exit 1
-                    fi
